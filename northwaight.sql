@@ -46,10 +46,25 @@ SELECT * FROM employees WHERE LastName LIKE "Da_____";
 SELECT * FROM products WHERE ProductName IS NULL;
 SELECT * FROM products WHERE ProductName IS NOT NULL;
 
-/* IN */
+/* IN - NOT IN */
 SELECT * FROM customers WHERE CustomerName IN ("Gourmet Lanchonetes", "Rancho grande");
 SELECT * FROM customers WHERE CustomerName NOT IN ("Gourmet Lanchonetes", "Rancho grande", "Ana Trujillo Emparedados y helados");
 
+/* Aggregation functions */
+SELECT count(FirstName) from Employees
+SELECT AVG(SUM(Price)) as Average_Price from Products
+
+
+DECLARE
+    BEGIN
+        DECLARE PROCEDURE SUMSOMETHING()
+            HAAFJ
+    END
+
+
+
+
+CALL SUMSOMETHING()
 
 CREATE TABLE Categories
 (      
