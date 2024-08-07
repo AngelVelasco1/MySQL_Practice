@@ -1,3 +1,6 @@
+-- Active: 1704747285489@@127.0.0.1@3306@northwaight
+USE northwaight;
+
 /* 1. Alias */
 SELECT customerName AS name FROM Customers;
 SELECT Price, Price*2 AS double_price FROM Products;
@@ -9,7 +12,7 @@ SELECT * FROM Products ORDER BY Price, ProductName DESC;
 SELECT * FROM Products ORDER BY RAND();
 SELECT DISTINCT ProductName FROM Products ORDER BY ProductName ASC;
 
-/* WHERE */
+/* WHERE (FILTRAR REGISTROS ) */
 SELECT * FROM Products WHERE ProductID = 1;
 SELECT * FROM Products WHERE ProductName = "Tofu";
 SELECT * FROM Products WHERE Price >= 90;
@@ -51,20 +54,39 @@ SELECT * FROM customers WHERE CustomerName IN ("Gourmet Lanchonetes", "Rancho gr
 SELECT * FROM customers WHERE CustomerName NOT IN ("Gourmet Lanchonetes", "Rancho grande", "Ana Trujillo Emparedados y helados");
 
 /* Aggregation functions */
-SELECT count(FirstName) from Employees
-SELECT AVG(SUM(Price)) as Average_Price from Products
+SELECT COUNT(FirstName) as count_employees from Employees;
+SELECT AVG(Price) as Average_Price from Products;
 
+SELECT ProductName, MIN(Price) from Products WHERE ProductName IS NOT NULL;
+SELECT ProductName, MAX(Price) from Products WHERE ProductName IS NOT NULL;
 
-DECLARE
-    BEGIN
-        DECLARE PROCEDURE SUMSOMETHING()
-            HAAFJ
-    END
+/* Group by (AGRUPA REGISTROS) y having (FILTRA GRUPOS) */
+SELECT CategoryID, ROUND(AVG(Price)) AS Average FROM Products 
+WHERE CategoryID IS NOT NULL
+GROUP BY CategoryID 
+HAVING Average >= 35
+ORDER BY Average DESC;
 
+SELECT ProductID, SUM(Quantity) as Total from OrderDetails
+GROUP BY ProductID
+ORDER BY Total DESC
+LIMIT 1;
 
-
-
-CALL SUMSOMETHING()
+/* Subqueries (Consultas dentro de otras para recuperar info, no modificarla) */
+SELECT
+    Total,
+    ProductName,
+    ProductPrice,
+    Total * ProductPrice AS Earns
+FROM (
+   SELECT ProductID, 
+       SUM(Quantity) AS Total,
+       (SELECT ProductName FROM Products WHERE OrderDetails.ProductID = ProductID) AS ProductName,
+       (SELECT Price FROM Products WHERE OrderDetails.ProductID = ProductID) AS ProductPrice
+   FROM OrderDetails 
+   GROUP BY ProductID
+) AS SubQuery
+WHERE ProductPrice > 40;
 
 CREATE TABLE Categories
 (      
