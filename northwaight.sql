@@ -25,6 +25,9 @@ SELECT * FROM shippers WHERE ShipperName = "Speedy Express" OR ShipperName = "Fe
 SELECT * FROM products WHERE (Price <= 20 OR CategoryID = 2) AND SupplierID = 7;
 SELECT * FROM products WHERE (Price <= 20 AND CategoryID = 3) AND NOT SupplierId = 8;
 
+/* DIFFERENT TO */
+
+
 /* LIMIT */
 SELECT * FROM Customers WHERE (CustomerId >= 50) AND NOT Country = "UK" LIMIT 5;
 SELECT * FROM Products WHERE NOT CategoryID = 6 AND NOT SupplierID = 1 AND PRICE <= 20 ORDER BY RAND()  LIMIT 4;
@@ -53,18 +56,36 @@ SELECT * FROM products WHERE ProductName IS NOT NULL;
 SELECT * FROM customers WHERE CustomerName IN ("Gourmet Lanchonetes", "Rancho grande");
 SELECT * FROM customers WHERE CustomerName NOT IN ("Gourmet Lanchonetes", "Rancho grande", "Ana Trujillo Emparedados y helados");
 
-/* Aggregation functions */
+/* AGGREGATION FUNCTIONS */
 SELECT COUNT(FirstName) as count_employees from Employees;
-SELECT AVG(Price) as Average_Price from Products;
+SELECT COUNT(*) as count_employees from Employees;
 
+SELECT COUNT(*) AS TotalOrders FROM Orders
+
+SELECT 
+SELECT CustomerID, COUNT(OrderID) AS NumberOrders
+FROM Orders
+GROUP BY `CustomerID`
+
+
+SELECT AVG(Price) as Average_Price from Products;
 SELECT ProductName, MIN(Price) from Products WHERE ProductName IS NOT NULL;
 SELECT ProductName, MAX(Price) from Products WHERE ProductName IS NOT NULL;
+
+SELECT CategoryID, GROUP_CONCAT(ProductName) AS Names 
+FROM Products 
+GROUP BY CategoryID;
+
+
+SELECT CategoryID, MIN(Price) AS LowPrice, MAX(Price) AS HighestPrice From Products GROUP BY CategoryID;
+/* DISTINCT */
+
 
 /* Group by (AGRUPA REGISTROS) y having (FILTRA GRUPOS) */
 SELECT CategoryID, ROUND(AVG(Price)) AS Average FROM Products 
 WHERE CategoryID IS NOT NULL
 GROUP BY CategoryID 
-HAVING Average >= 35
+HAVING Average >= 30
 ORDER BY Average DESC;
 
 SELECT ProductID, SUM(Quantity) as Total from OrderDetails
@@ -73,6 +94,10 @@ ORDER BY Total DESC
 LIMIT 1;
 
 /* Subqueries (Consultas dentro de otras para recuperar info, no modificarla) */
+SELECT FirstName, LastName,
+    (SELECT COUNT(OrderID) FROM Orders WHERE Employees.EmployeeID = Orders.EmployeeID) AS TotalOrders
+FROM Employees
+
 SELECT
     Total,
     ProductName,
@@ -88,6 +113,45 @@ FROM (
 ) AS SubQuery
 WHERE ProductPrice > 40;
 
+/** Select from a subquery, creating a new table */
+/* New virtual table earns from a subquery */
+Select ProductName, Earns FROM (
+    SELECT
+    Total,
+    ProductName,
+    ProductPrice,
+    Total * ProductPrice AS Earns
+FROM (
+   SELECT ProductID, 
+       SUM(Quantity) AS Total,
+       (SELECT ProductName FROM Products WHERE OrderDetails.ProductID = ProductID) AS ProductName,
+       (SELECT Price FROM Products WHERE OrderDetails.ProductID = ProductID) AS ProductPrice
+   FROM OrderDetails 
+   GROUP BY ProductID
+) AS SubQuery
+   WHERE ProductPrice > 40
+) AS Most_Selling_Products
+WHERE Earns > 10000
+
+/* Subqueries Exercises */
+SELECT FirstName, LastName, EmployeesOrders 
+    FROM (
+      SELECT EmployeeID, FirstName, LastName,
+      (SELECT SUM(OrderDetails.Quantity) FROM OrderDetails, Orders WHERE Orders.EmployeeID = Employees.EmployeeID AND Orders.OrderID = OrderDetails.OrderID)  AS EmployeesOrders
+      FROM Employees  
+      GROUP BY EmployeeID
+) AS Subquery
+WHERE EmployeesOrders IS NOT NULL
+ORDER BY EmployeesOrders DESC
+
+SELECT SUM(CASE WHEN Price > 200 THEN Price END)
+AS ProductsSUM
+FROM Products;
+
+SELECT SUM(Price)
+AS ProductsSUM
+FROM Products
+WHERE Price > 200;
 CREATE TABLE Categories
 (      
     CategoryID INTEGER PRIMARY KEY AUTO_INCREMENT,
