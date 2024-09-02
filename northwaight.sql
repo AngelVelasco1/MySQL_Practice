@@ -134,15 +134,30 @@ FROM (
 WHERE Earns > 10000
 
 /* Subqueries Exercises */
-SELECT FirstName, LastName, EmployeesOrders 
-    FROM (
-      SELECT EmployeeID, FirstName, LastName,
-      (SELECT SUM(OrderDetails.Quantity) FROM OrderDetails, Orders WHERE Orders.EmployeeID = Employees.EmployeeID AND Orders.OrderID = OrderDetails.OrderID)  AS EmployeesOrders
-      FROM Employees  
-      GROUP BY EmployeeID
-) AS Subquery
-WHERE EmployeesOrders IS NOT NULL
-ORDER BY EmployeesOrders DESC
+SELECT FirstName, LastName, 
+    (
+        SELECT SUM(OrderDetails.Quantity) 
+        FROM OrderDetails, Orders 
+        WHERE Orders.EmployeeID = Employees.EmployeeID 
+        AND Orders.OrderID = OrderDetails.OrderID
+    ) AS EmployeesOrders    
+FROM Employees  
+HAVING EmployeesOrders IS NOT NULL AND EmployeesOrders > 
+    	(
+        SELECT AVG(EmployeesOrders2) 
+        FROM (
+            SELECT 
+                (
+                    SELECT SUM(OrderDetails.Quantity) 
+                    FROM OrderDetails, Orders 
+                    WHERE Orders.EmployeeID = Employees.EmployeeID 
+                    AND Orders.OrderID = OrderDetails.OrderID
+                ) AS EmployeesOrders2
+            FROM Employees 
+            GROUP BY Employees.EmployeeID
+        ) AS OrdersAverage
+    );
+
 
 SELECT SUM(CASE WHEN Price > 200 THEN Price END)
 AS ProductsSUM
