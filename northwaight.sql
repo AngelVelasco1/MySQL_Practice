@@ -124,7 +124,7 @@ Select ProductName, Earns FROM (
 FROM (
    SELECT ProductID, 
        SUM(Quantity) AS Total,
-       (SELECT ProductName FROM Products WHERE OrderDetails.ProductID = ProductID) AS ProductName,
+       (SELECT ProductName FROM Product WHERE OrderDetails.ProductID = ProductID) AS ProductName,
        (SELECT Price FROM Products WHERE OrderDetails.ProductID = ProductID) AS ProductPrice
    FROM OrderDetails 
    GROUP BY ProductID
@@ -158,6 +158,23 @@ HAVING EmployeesOrders IS NOT NULL AND EmployeesOrders >
         ) AS OrdersAverage
     );
 
+/* Joins */
+
+
+/* Transactions */
+START TRANSACTION; 
+UPDATE Products SET Unit = Unit - 1 WHERE ProductID;
+INSERT INTO Orders (CustomerID, EmployeeID, OrderDate, ShipperID) VALUES (1, 2, "2005-12-01", 2);
+COMMIT;
+ROLLBACK;
+
+
+
+
+
+
+
+
 
 SELECT SUM(CASE WHEN Price > 200 THEN Price END)
 AS ProductsSUM
@@ -167,6 +184,10 @@ SELECT SUM(Price)
 AS ProductsSUM
 FROM Products
 WHERE Price > 200;
+
+
+
+
 CREATE TABLE Categories
 (      
     CategoryID INTEGER PRIMARY KEY AUTO_INCREMENT,
