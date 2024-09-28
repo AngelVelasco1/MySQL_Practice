@@ -43,5 +43,8 @@ CREATE PROCEDURE sp_generateService (
 DELIMITER ;
 
 CALL sp_generateService(2, "Angel Velasco", "angelgg2020@outlook.com", "10848457451", @serviceResponse);
+CALL sp_generateService(2, "Maria villa", "maria@gmail.com", "10255777754", @serviceResponse);
+CALL sp_generateService(1, "Follon", "follon@gmail.com", "10255777754", @serviceResponse);
+
 SELECT @serviceResponse;
 SELECT * FROM customers;

@@ -40,3 +40,13 @@ CREATE TABLE Services (
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
+
+CREATE TABLE CustomersLogs (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    customer_id BIGINT UNSIGNED,
+    date DATETIME,
+    FOREIGN KEY (customer_id)
+        REFERENCES Customers(id)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+);
