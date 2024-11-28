@@ -1,4 +1,6 @@
--- Active: 1704747285489@@127.0.0.1@3306@northwaight
+-- Active: 1732828666533@@127.0.0.1@3306
+create database northwaight;
+
 USE northwaight;
 
 /* 1. Alias */
@@ -418,24 +420,24 @@ INSERT INTO Suppliers VALUES(28,'Gai pâturage','Eliane Noz','Bat. B 3, rue des 
 INSERT INTO Suppliers VALUES(29,'Forêts d''érables','Chantal Goulet','148 rue Chasseur','Ste-Hyacinthe','J2S 7S8','Canada','(514) 555-2955');
 
 INSERT INTO Products VALUES(NULL, "Perro", NULL, NULL, NULL, NULL);
-INSERT INTO Products VALUES(1,'Chais',1,1,'10 boxes x 20 bags',18.00);
-INSERT INTO Products VALUES(2,'Chang',1,1,'24 - 12 oz bottles',19.00);
-INSERT INTO Products VALUES(3,'Aniseed Syrup',1,2,'12 - 550 ml bottles',10.00);
-INSERT INTO Products VALUES(4,'Chef Anton''s Cajun Seasoning',2,2,'48 - 6 oz jars',22.00);
-INSERT INTO Products VALUES(5,'Chef Anton''s Gumbo Mix',2,2,'36 boxes',21.35);
-INSERT INTO Products VALUES(6,'Grandma''s Boysenberry Spread',3,2,'12 - 8 oz jars',25.00);
-INSERT INTO Products VALUES(7,'Uncle Bob''s Organic Dried Pears',3,7,'12 - 1 lb pkgs.',30.00);
-INSERT INTO Products VALUES(8,'Northwoods Cranberry Sauce',3,2,'12 - 12 oz jars',40.00);
-INSERT INTO Products VALUES(9,'Mishi Kobe Niku',4,6,'18 - 500 g pkgs.',97.00);
-INSERT INTO Products VALUES(10,'Ikura',4,8,'12 - 200 ml jars',31.00);
-INSERT INTO Products VALUES(11,'Queso Cabrales',5,4,'1 kg pkg.',21.00);
-INSERT INTO Products VALUES(12,'Queso Manchego La Pastora',5,4,'10 - 500 g pkgs.',38.00);
-INSERT INTO Products VALUES(13,'Konbu',6,8,'2 kg box',6.00);
-INSERT INTO Products VALUES(14,'Tofu',6,7,'40 - 100 g pkgs.',23.25);
-INSERT INTO Products VALUES(15,'Genen Shouyu',6,2,'24 - 250 ml bottles',15.50);
-INSERT INTO Products VALUES(16,'Pavlova',7,3,'32 - 500 g boxes',17.45);
-INSERT INTO Products VALUES(17,'Alice Mutton',7,6,'20 - 1 kg tins',39);
-INSERT INTO Products VALUES(18,'Carnarvon Tigers',7,8,'16 kg pkg.',62.50);
+INSERT INTO Products VALUES(100,'Chais',1,1,'10 boxes x 20 bags',18.00);
+INSERT INTO Products VALUES(102,'Chang',1,1,'24 - 12 oz bottles',19.00);
+INSERT INTO Products VALUES(103,'Aniseed Syrup',1,2,'12 - 550 ml bottles',10.00);
+INSERT INTO Products VALUES(411,'Chef Anton''s Cajun Seasoning',2,2,'48 - 6 oz jars',22.00);
+INSERT INTO Products VALUES(445,'Chef Anton''s Gumbo Mix',2,2,'36 boxes',21.35);
+INSERT INTO Products VALUES(446,'Grandma''s Boysenberry Spread',3,2,'12 - 8 oz jars',25.00);
+INSERT INTO Products VALUES(447,'Uncle Bob''s Organic Dried Pears',3,7,'12 - 1 lb pkgs.',30.00);
+INSERT INTO Products VALUES(448,'Northwoods Cranberry Sauce',3,2,'12 - 12 oz jars',40.00);
+INSERT INTO Products VALUES(944,'Mishi Kobe Niku',4,6,'18 - 500 g pkgs.',97.00);
+INSERT INTO Products VALUES(140,'Ikura',4,8,'12 - 200 ml jars',31.00);
+INSERT INTO Products VALUES(114,'Queso Cabrales',5,4,'1 kg pkg.',21.00);
+INSERT INTO Products VALUES(142,'Queso Manchego La Pastora',5,4,'10 - 500 g pkgs.',38.00);
+INSERT INTO Products VALUES(143,'Konbu',6,8,'2 kg box',6.00);
+INSERT INTO Products VALUES(144,'Tofu',6,7,'40 - 100 g pkgs.',23.25);
+INSERT INTO Products VALUES(155,'Genen Shouyu',6,2,'24 - 250 ml bottles',15.50);
+INSERT INTO Products VALUES(146,'Pavlova',7,3,'32 - 500 g boxes',17.45);
+INSERT INTO Products VALUES(147,'Alice Mutton',7,6,'20 - 1 kg tins',39);
+INSERT INTO Products VALUES(148,'Carnarvon Tigers',7,8,'16 kg pkg.',62.50);
 INSERT INTO Products VALUES(19,'Teatime Chocolate Biscuits',8,3,'10 boxes x 12 pieces',9.20);
 INSERT INTO Products VALUES(20,'Sir Rodney''s Marmalade',8,3,'30 gift boxes',81.00);
 INSERT INTO Products VALUES(21,'Sir Rodney''s Scones',8,3,'24 pkgs. x 4 pieces',10.00);
@@ -693,13 +695,13 @@ INSERT INTO Orders VALUES(10441,55,3,'1997-02-10',2);
 INSERT INTO Orders VALUES(10442,20,3,'1997-02-11',2);
 INSERT INTO Orders VALUES(10443,66,8,'1997-02-12',1);
 
-INSERT INTO OrderDetails VALUES(1,10248,11,12);
-INSERT INTO OrderDetails VALUES(2,10248,42,10);
-INSERT INTO OrderDetails VALUES(3,10248,72,5);
-INSERT INTO OrderDetails VALUES(4,10249,14,9);
-INSERT INTO OrderDetails VALUES(5,10249,51,40);
-INSERT INTO OrderDetails VALUES(6,10250,41,10);
-INSERT INTO OrderDetails VALUES(7,10250,51,35);
+INSERT INTO OrderDetails VALUES(1,10248,100,12);
+INSERT INTO OrderDetails VALUES(2,10248,100,10);
+INSERT INTO OrderDetails VALUES(3,10248,100,5);
+INSERT INTO OrderDetails VALUES(4,10249,100,9);
+INSERT INTO OrderDetails VALUES(5,10249,100,40);
+INSERT INTO OrderDetails VALUES(6,10250,100,10);
+INSERT INTO OrderDetails VALUES(7,10250,100,35);
 INSERT INTO OrderDetails VALUES(8,10250,65,15);
 INSERT INTO OrderDetails VALUES(9,10251,22,6);
 INSERT INTO OrderDetails VALUES(10,10251,57,15);

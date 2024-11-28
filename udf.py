@@ -5,13 +5,12 @@ import matplotlib.pyplot as grafic
 conx = pymysql.connect(
     host="127.0.0.1",
     user="root",
-    password="@Davidteam1",
     database="northwaight"
 )
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine('mysql+pymysql://root:%40Davidteam1@127.0.0.1/northwaight')
+engine = create_engine('mysql+pymysql://root:@127.0.0.1/northwaight')
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -56,7 +55,7 @@ query =  '''
         JOIN employees e ON e.EmployeeID = o.EmployeeID
         GROUP BY o.EmployeeID, e.FirstName, e.LastName
         ORDER BY Earns DESC
-        LIMIT 10
+        LIMIT 5
  '''
 
 top_employees = pd.read_sql_query(query, session.connection());

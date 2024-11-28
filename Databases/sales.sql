@@ -1,4 +1,5 @@
--- Active: 1731946694269@@127.0.0.1@3306@sales
+-- Active: 1732828666533@@127.0.0.1@3306@northwaight
+CREATE DATABASE IF NOT EXISTS SALES;
 USE SALES;
 
 CREATE TABLE IF NOT EXISTS Suscriptions (
@@ -51,5 +52,7 @@ CREATE TABLE IF NOT EXISTS CustomersLogs (
         ON UPDATE CASCADE
 );
 
+-- Ver la estructura de una tabla
+DESCRIBE Services;
 DROP TABLE IF EXISTS CustomersLogs;
 
