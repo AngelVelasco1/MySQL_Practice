@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Topics/DDL Queries/truncate.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/DML Queries/delete.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/DML Queries/insert.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/DML Queries/select.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/DML Queries/update.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/basics/alter_tables.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/basics/maths and functions.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/basics/tables.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>
