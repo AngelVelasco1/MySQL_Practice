@@ -15,3 +15,10 @@ SELECT * FROM users where lastName LIKE '%s%';
 
 SELECT * FROM users WHERE NOT address = 'No address';
 
+/* Elimina los campos duplicados */
+SELECT DISTINCT rango from caballeros;
+
+/* Between (Trabajar con rangos) */
+SELECT * FROM products WHERE price BETWEEN 10000 AND 20000;
+
+

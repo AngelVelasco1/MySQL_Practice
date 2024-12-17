@@ -6,9 +6,11 @@
     <file url="file://$PROJECT_DIR$/Topics/DML Queries/insert.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Topics/DML Queries/select.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Topics/DML Queries/update.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/aggregations.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Topics/basics/alter_tables.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/Topics/basics/maths and functions.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/basics/math functions.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/Topics/basics/tables.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Topics/regexp.sql" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>
