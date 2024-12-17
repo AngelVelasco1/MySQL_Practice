@@ -15,7 +15,7 @@ SELECT * FROM products WHERE name NOT REGEXP 'dora$';
 
 /* Reemplaza algo por otra cosa en un texto
 (TEXTO, ELEMENTO DEL TEXTO A REEMPLAZAR, ELEMENTO QUE REEMPLAZA) */
-SELECT REGEXP_REPLACE(description, ' ', '-') AS withoutSpaces from products;
+SELECT REGEXP_REPLACE(description, '[0-9]', ' ') AS withoutNumbers from products;
 
 
 
