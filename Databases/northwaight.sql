@@ -170,22 +170,6 @@ AS ProductsSUM
 FROM Products
 WHERE Price > 200;
 
-/* JOINS */
-
-/* Inner Join con ON para unir y traer solo las coincidencias de dos tablas*/
-SELECT FirstName, RewardID, Quantity, Date  FROM employees 
-INNER JOIN rewards ON employees.EmployeeID = rewards.EmployeeID
-
-
-/* Left Join permite traer todo de la primera tabla y solo una parte de la otra que cumpla la condicion */
-SELECT FirstName, RewardID, Quantity, Date  FROM employees 
-LEFT JOIN rewards ON employees.EmployeeID = rewards.EmployeeID
-
-/*  Right Join permite traer todo de la segunda tabla y solo una parte de la otra que cumpla la condicion */
-SELECT FirstName, RewardID, Quantity, Date  FROM employees 
-RIGHT JOIN rewards ON employees.EmployeeID = rewards.EmployeeID
-
-
 /* Indexs */
 
 /* Transactions */
